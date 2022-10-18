@@ -1,0 +1,14 @@
+version: '3.4'
+
+services:
+  pollingdb:
+    image: postgres
+
+  pgadmin:
+    image: dpage/pgadmin4
+
+  polling:
+    image: ${DOCKER_REGISTRY-}polling
+    build:
+      context: .
+      dockerfile: src/Services/Polling/Dockerfile
