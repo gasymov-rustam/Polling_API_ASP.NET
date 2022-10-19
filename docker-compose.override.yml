@@ -1,37 +1,36 @@
 version: '3.4'
 
 services:
-  polling:
-    pollingdb:
-    container_name: pollingdb
-    environment:
+   pollingdb:
+     container_name: pollingdb
+     environment:
       - POSTGRES_USER=admin
       - POSTGRES_PASSWORD=admin1234
       - POSTGRES_DB=pollingdb
-    restart: always
-    ports:
+     restart: always
+     ports:
         - "5432:5432"
 
-    pgadmin:
-    container_name: pgadmin
-    environment:
+   pgadmin:
+     container_name: pgadmin
+     environment:
       - pgadmin_default_email=admin@aspnetrun.com
       - PGADMIN_DEFAULT_PASSWORD=admin1234
-    restart: always
-    ports:
+     restart: always
+     ports:
       - "5050:80"
 
-    polling:
-        container_name: polling
-    environment:
-      - ASPNETCORE_ENVIRONMENT=Development
-      - ASPNETCORE_URLS=https://+:443;http://+:80
-      - "Configuration:DefaultConnection=Server=pollingdb;Port=5432;Database=PollingDb;User Id=admin;Password=admin1234;"
-    ports:
-      - "80"
-      - "443"
-    depends_on:
-      - pollingdb
-    volumes:
-      - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
-      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+   polling:
+     container_name: polling
+     environment:
+       - ASPNETCORE_ENVIRONMENT=Development
+       - ASPNETCORE_URLS=https://+:443;http://+:80
+       - "Configuration:DefaultConnection=Server=pollingdb;Port=5432;Database=PollingDb;User Id=admin;Password=admin1234;"
+     ports:
+       - "80"
+       - "443"
+     depends_on:
+       - pollingdb
+     volumes:
+       - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
+       - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
