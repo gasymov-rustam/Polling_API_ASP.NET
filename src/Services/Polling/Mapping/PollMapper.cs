@@ -14,13 +14,13 @@ namespace Polling.Mapping
                 Name = dto.Name,
             };
         }
-        
+
         public static Poll UpdatePollDtoToPoll(this UpdatePollDto dto, Poll existPoll)
         {
             existPoll.Duration = dto.Duration;
             existPoll.Name = dto.Name;
             existPoll.Author = dto.Author;
-             
+
             return existPoll;
         }
     }
