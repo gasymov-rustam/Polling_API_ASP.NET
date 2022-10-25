@@ -2,7 +2,7 @@
 
 namespace Polling.Security.Domain.Entities
 {
-    internal sealed class Role : BaseEntity
+    public sealed class Role : BaseEntity
     {
         public Role(string name)
         {

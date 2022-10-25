@@ -2,7 +2,7 @@
 
 namespace Polling.Security.Domain.Entities
 {
-    internal sealed class User : BaseEntity
+    public class User : BaseEntity
     {
         public User(string email,
                     string password,

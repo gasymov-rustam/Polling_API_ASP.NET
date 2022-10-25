@@ -2,7 +2,7 @@
 
 namespace Polling.Security.Domain.Entities
 {
-    internal sealed class RefreshToken : BaseEntity
+    public sealed class RefreshToken : BaseEntity
     {
         public RefreshToken(string token,
                             int userId)
