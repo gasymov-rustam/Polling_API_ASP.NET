@@ -12,12 +12,17 @@ namespace Polling.Security.Domain.Entities
             Password = password;
             RoleId = roleId;
         }
+        public User()
+        {
+            Tokens = new HashSet<RefreshToken>();
+        }
 
-        public string Email { get; }
-        public string Password { get; }
-        public int RoleId { get; }
+        public string Email { get; set; }
+        public string Password { get; set; }
+        public int RoleId { get; set; }
         public DateTimeOffset CreatedAt { get; } = DateTimeOffset.UtcNow;
 
-        public Role Role { get; }
+        public Role Role { get; set; }
+        public ICollection<RefreshToken> Tokens { get; set; }
     }
 }

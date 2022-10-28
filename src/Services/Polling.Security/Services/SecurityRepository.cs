@@ -46,7 +46,9 @@ namespace Polling.Security.Services
                 throw new Exception("Password or login is not correct");
             }
 
-            var accessJwt = _jwtService.CreateToken(existUser.Id.ToString(), existUser.Role.Name);
+            var role = await _roleRepository.GetRoleByIDAsync(existUser.RoleId);
+
+            var accessJwt = _jwtService.CreateToken(existUser.Id.ToString(), role.Name);
 
             accessJwt.Email = existUser.Email;
 
@@ -67,9 +69,11 @@ namespace Polling.Security.Services
 
             await _userRepository.CreateUserAsync(mapper);
 
-            var accessJwt = _jwtService.CreateToken(mapper.Id.ToString(), mapper.Role.Name);
+            var role = await _roleRepository.GetRoleByIDAsync(dto.RoleId);
 
-            accessJwt.Email = existUser.Email;
+            var accessJwt = _jwtService.CreateToken(mapper.Id.ToString(), role.Name);
+
+            accessJwt.Email = existUser?.Email;
 
             _tokenStorage.Set(accessJwt);
         }

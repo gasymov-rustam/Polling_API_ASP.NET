@@ -15,7 +15,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shared", "src\Shared\Shared
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{147D01E4-B18B-4DFD-A8D3-8BC78C97E4B2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Polling.Security", "src\Services\Polling.Security\Polling.Security.csproj", "{F1CE58E0-D57F-4F2C-BC04-A4ADB062AA4A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Polling.Security", "src\Services\Polling.Security\Polling.Security.csproj", "{F1CE58E0-D57F-4F2C-BC04-A4ADB062AA4A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

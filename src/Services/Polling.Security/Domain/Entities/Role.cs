@@ -9,7 +9,12 @@ namespace Polling.Security.Domain.Entities
             Name = name;
         }
 
-        public string Name { get; }
-        public List<User> Users { get; }
+        public Role()
+        {
+            Users = new HashSet<User>();
+        }
+
+        public string Name { get; set; }
+        public ICollection<User> Users { get; }
     }
 }

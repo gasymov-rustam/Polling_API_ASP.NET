@@ -18,6 +18,11 @@ namespace Polling.Security.Dal
                 options.HasMany(x => x.Users).WithOne(x => x.Role).HasForeignKey(x => x.RoleId);
             });
 
+            builder.Entity<RefreshToken>(options =>
+            {
+                options.HasOne(x => x.User).WithMany(x => x.Tokens).HasForeignKey(x => x.UserId);
+            });
+
             base.OnModelCreating(builder);
         }
     }
