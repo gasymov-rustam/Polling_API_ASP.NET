@@ -4,6 +4,7 @@
     {
         public string? Issuer { get; set; }
         public string? IssuerSigningKey { get; set; }
+        public string? RefreshSigningKey { get; set; }
         public string? Audience { get; set; }
         public int Expiry { get; set; }
         public bool ValidateAudience { get; set; }

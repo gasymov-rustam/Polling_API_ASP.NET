@@ -6,6 +6,6 @@ namespace Polling.Security.Services
     {
         Task<RefreshToken> GetAsync(string token);
         Task AddAsync(RefreshToken token);
-        Task UpdateAsync(RefreshToken token);
+        Task<RefreshToken> UpdateAsync(RefreshToken token);
     }
 }

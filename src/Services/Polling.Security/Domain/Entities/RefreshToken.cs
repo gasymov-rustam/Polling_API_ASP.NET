@@ -10,6 +10,11 @@ namespace Polling.Security.Domain.Entities
             Token = token;
             UserId = userId;
         }
+        public RefreshToken(string token)
+        {
+            Token = token;
+        }
+
         public RefreshToken() { }
 
         public string Token { get; set; }

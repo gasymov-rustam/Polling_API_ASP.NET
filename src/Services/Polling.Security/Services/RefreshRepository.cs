@@ -21,10 +21,12 @@ namespace Polling.Security.Services
 
         public async Task<RefreshToken> GetAsync(string token) => await _context.RefreshToken.FirstOrDefaultAsync(x => x.Token == token);
 
-        public async Task UpdateAsync(RefreshToken token)
+        public async Task<RefreshToken> UpdateAsync(RefreshToken token)
         {
             _context.RefreshToken.Update(token);
             await _context.SaveChangesAsync();
+
+            return token;
         }
     }
 }

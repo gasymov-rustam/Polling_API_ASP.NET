@@ -49,10 +49,16 @@ namespace Polling.Security.Services
                                                     expires,
                                                     jwtClaims);
 
+            var refreshJwt = _tokenGenerator.GenerateToken(_options.RefreshSigningKey,
+                                                    _options.Issuer,
+                                                    _options.Audience,
+                                                    expires,
+                                                    jwtClaims);
+
             return new JsonWebToken
             {
                 AccessToken = jwt,
-                RefreshToken = string.Empty,
+                RefreshToken = refreshJwt,
                 Expires = expires.ToTimestamp(),
                 UserId = userId,
                 Role = role ?? "user",

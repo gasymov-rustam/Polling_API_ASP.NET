@@ -39,9 +39,9 @@ namespace Polling.Security.Services
                 throw new Exception("User is not exist");
             }
 
-            var IsValidated = _passwordManager.Validate(dto.Password, existUser.Password);
+            var isValidated = _passwordManager.Validate(dto.Password, existUser.Password);
 
-            if (!IsValidated)
+            if (!isValidated)
             {
                 throw new Exception("Password or login is not correct");
             }
@@ -51,6 +51,8 @@ namespace Polling.Security.Services
             var accessJwt = _jwtService.CreateToken(existUser.Id.ToString(), role.Name);
 
             accessJwt.Email = existUser.Email;
+
+            await _refreshRepository.AddAsync(new RefreshToken(accessJwt.RefreshToken, existUser.Id));
 
             _tokenStorage.Set(accessJwt);
         }
@@ -73,7 +75,9 @@ namespace Polling.Security.Services
 
             var accessJwt = _jwtService.CreateToken(mapper.Id.ToString(), role.Name);
 
-            accessJwt.Email = existUser?.Email;
+            accessJwt.Email = mapper?.Email;
+
+            await _refreshRepository.AddAsync(new RefreshToken(accessJwt.RefreshToken, mapper.Id));
 
             _tokenStorage.Set(accessJwt);
         }
